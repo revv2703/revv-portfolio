@@ -69,7 +69,7 @@ export type HomepageDocument<Lang extends string = string> =
     Lang
   >;
 
-type PageDocumentDataSlicesSlice = BiographySlice;
+type PageDocumentDataSlicesSlice = TechStackSlice | BiographySlice;
 
 /**
  * Content for Page documents
@@ -436,6 +436,76 @@ type HeroSliceVariation = HeroSliceDefault;
  */
 export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
 
+/**
+ * Primary content in *TechStack → Primary*
+ */
+export interface TechStackSliceDefaultPrimary {
+  /**
+   * Heading field in *TechStack → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: tech_stack.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  heading: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *TechStack → Items*
+ */
+export interface TechStackSliceDefaultItem {
+  /**
+   * Tech Name field in *TechStack → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: tech_stack.items[].tech_name
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  tech_name: prismic.KeyTextField;
+
+  /**
+   * Tech Color field in *TechStack → Items*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: *None*
+   * - **API ID Path**: tech_stack.items[].tech_color
+   * - **Documentation**: https://prismic.io/docs/field#color
+   */
+  tech_color: prismic.ColorField;
+}
+
+/**
+ * Default variation for TechStack Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TechStackSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<TechStackSliceDefaultPrimary>,
+  Simplify<TechStackSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *TechStack*
+ */
+type TechStackSliceVariation = TechStackSliceDefault;
+
+/**
+ * TechStack Shared Slice
+ *
+ * - **API ID**: `tech_stack`
+ * - **Description**: TechStack
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TechStackSlice = prismic.SharedSlice<
+  "tech_stack",
+  TechStackSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -464,6 +534,11 @@ declare module "@prismicio/client" {
       HeroSliceDefaultPrimary,
       HeroSliceVariation,
       HeroSliceDefault,
+      TechStackSlice,
+      TechStackSliceDefaultPrimary,
+      TechStackSliceDefaultItem,
+      TechStackSliceVariation,
+      TechStackSliceDefault,
     };
   }
 }
