@@ -2,7 +2,19 @@
 	{
 		"__TYPE__": "SharedSliceContent",
 		"variation": "default",
-		"primary": {},
+		"primary": {
+			"text": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Deserunt et id veniam ad labore cillum qui et ullamco culpa excepteur."
+						}
+					}
+				]
+			}
+		},
 		"items": []
 	}
 ]
