@@ -76,8 +76,8 @@ function Geometries(){
 }
 
 
-function Geometry({r, position, geometry, materials, soundEffects}){
-    const meshRef = useRef()
+function Geometry({r, position, geometry, materials, soundEffects}: {r: number, position: number[], geometry: THREE.BufferGeometry, materials: THREE.Material[], soundEffects: HTMLAudioElement[]}){
+    const meshRef = useRef(null)
     const [visible, setVisible] = useState(false)
 
     const startingMaterial = getRandomMaterial()
@@ -86,7 +86,7 @@ function Geometry({r, position, geometry, materials, soundEffects}){
         return gsap.utils.random(materials)
     }
 
-    function handleClick(e){
+    function handleClick(e: { object: any; }){
         const mesh = e.object
 
         gsap.utils.random(soundEffects).play()
@@ -114,7 +114,8 @@ function Geometry({r, position, geometry, materials, soundEffects}){
     useEffect(() => {
         let ctx = gsap.context(() => {
             setVisible(true)
-            gsap.from(meshRef.current.scale, {
+            const node = meshRef.current as any
+            gsap.from(node.scale, {
                 x: 0, y: 0, z: 0, duration: 1, ease: "elastic.out(1, 0.3)", delay: gsap.utils.random(0, 1)
             })
         })
@@ -122,8 +123,10 @@ function Geometry({r, position, geometry, materials, soundEffects}){
         return () => ctx.revert()
     }, [])
 
+    const positionVector = new THREE.Vector3(position[0], position[1], position[2]);
+
     return (
-        <group position={position} ref={meshRef}>
+        <group position={positionVector} ref={meshRef}>
             <Float speed={7 * r} rotationIntensity={6 * r} floatIntensity={5 * r}>
                 <mesh geometry={geometry} onClick={handleClick} onPointerOver={handlePointerOver} onPointerOut={handlePointerOut} visible={visible} material={startingMaterial} />
             </Float>
