@@ -16,12 +16,12 @@ export default async function Footer() {
         <div className="name flex flex-col items-center justify-center gap-x-4 gap-y-2 sm:flex-row sm:justify-self-start">
           <Link
             href="/"
-            className="text-xl font-extrabold tracking-tighter text-slate-100 transition-colors duration-150 hover:text-yellow-400"
+            className="text-xl font-extrabold tracking-tighter text-slate-100 transition-colors duration-150 hover:text-yellow-600"
           >
             {settings.data.name}
           </Link>
           <span
-            className="hidden text-5xl font-extralight leading-[0] text-slate-400 sm:inline"
+            className="hidden text-5xl font-extralight leading-[0] text-slate-500 sm:inline"
             aria-hidden={true}
           >
             /
@@ -37,7 +37,7 @@ export default async function Footer() {
                 <li>
                   <PrismicNextLink
                     className={clsx(
-                      "group relative block overflow-hidden  rounded px-3 py-1 text-base font-bold text-slate-100 transition-colors duration-150 hover:hover:text-yellow-400",
+                      "group relative block overflow-hidden rounded px-3 py-1 text-base font-bold text-slate-100 transition-colors duration-150 hover:hover:text-yellow-400",
                     )}
                     field={link}
                   >
