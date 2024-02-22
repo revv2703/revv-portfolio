@@ -1,0 +1,58 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"heading": {
+				"__TYPE__": "FieldContent",
+				"value": "sunlight",
+				"type": "Text"
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": [
+					[
+						"title",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "former",
+							"type": "Text"
+						}
+					],
+					[
+						"time_period",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "than",
+							"type": "Text"
+						}
+					],
+					[
+						"description",
+						{
+							"__TYPE__": "StructuredTextContent",
+							"value": [
+								{
+									"type": "paragraph",
+									"content": {
+										"text": "Deserunt esse et cillum cillum ad ut laborum veniam sint. Reprehenderit duis eu id pariatur elit quis excepteur esse voluptate. Adipisicing irure quis in incididunt dolor cillum sunt aliquip amet sint laborum fugiat consequat magna."
+									}
+								}
+							]
+						}
+					],
+					[
+						"organization",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "angle",
+							"type": "Text"
+						}
+					]
+				]
+			}
+		]
+	}
+]
